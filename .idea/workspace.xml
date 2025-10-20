@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add XML configuration files for migration state services">
-      <change afterPath="$PROJECT_DIR$/03_funciones/03_argumentos_por_nombres.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/RetosUdemyCourse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RetosUdemyCourse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add example of named arguments in Python function">
+      <change afterPath="$PROJECT_DIR$/03_funciones/04_regresar_tupla.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_funciones/05_argumentos_variables.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +54,8 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.03_argumentos_por_nombres.executor": "Run",
+    "Python.04_regresar_tupla.executor": "Run",
+    "Python.05_argumentos_variables.executor": "Run",
     "Python.Ejercicio_clasificador_costos_1_neurona.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -88,7 +89,7 @@
       <updated>1760730673463</updated>
       <workItem from="1760730674885" duration="1659000" />
       <workItem from="1760916296442" duration="85000" />
-      <workItem from="1760916545322" duration="2201000" />
+      <workItem from="1760916545322" duration="8691000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial implementation of expense classifier and dataset generation&#10;&#10;- Introduced a new Python script for classifying expenses using a Perceptron model.&#10;- Generated a dataset of expenses and saved it as a CSV file.&#10;- Added .gitignore to exclude generated files.&#10;- Created necessary project configuration files for IDE.">
       <option name="closed" value="true" />
@@ -106,7 +107,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760917111531</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add example of named arguments in Python function">
+      <option name="closed" value="true" />
+      <created>1760919036152</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1760919036152</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,10 +124,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add initial implementation of expense classifier and dataset generation&#10;&#10;- Introduced a new Python script for classifying expenses using a Perceptron model.&#10;- Generated a dataset of expenses and saved it as a CSV file.&#10;- Added .gitignore to exclude generated files.&#10;- Created necessary project configuration files for IDE." />
     <MESSAGE value="Add XML configuration files for migration state services" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add XML configuration files for migration state services" />
+    <MESSAGE value="Add example of named arguments in Python function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add example of named arguments in Python function" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$05_argumentos_variables.coverage" NAME="05_argumentos_variables Coverage Results" MODIFIED="1760929594607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
+    <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$04_regresar_tupla.coverage" NAME="04_regresar_tupla Coverage Results" MODIFIED="1760920777302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$Ejercicio_clasificador_costos_1_neurona.coverage" NAME="Ejercicio_clasificador_costos_1_neurona Coverage Results" MODIFIED="1760917735805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Redes_Neuronales" />
-    <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$03_argumentos_por_nombres.coverage" NAME="03_argumentos_por_nombres Coverage Results" MODIFIED="1760919013160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
+    <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$03_argumentos_por_nombres.coverage" NAME="03_argumentos_por_nombres Coverage Results" MODIFIED="1760920566221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
   </component>
 </project>
