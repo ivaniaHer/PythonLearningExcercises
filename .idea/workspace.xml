@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add functions to demonstrate variable arguments and recursion in Python">
-      <change afterPath="$PROJECT_DIR$/03_funciones/09_potencia_numero_recursividad.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_funciones/10_sistema_inventario.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_colecciones/dict_04_sistema_inventario.py" beforeDir="false" afterPath="$PROJECT_DIR$/02_colecciones/dict_04_sistema_inventario.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +62,9 @@
     "Python.07_funciones_recursivas.executor": "Run",
     "Python.08_factorial_numero.executor": "Run",
     "Python.09_potencia_numero_recursividad.executor": "Debug",
+    "Python.10_sistema_inventario.executor": "Run",
     "Python.Ejercicio_clasificador_costos_1_neurona.executor": "Run",
+    "Python.dict_04_sistema_inventario.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -100,7 +103,7 @@
       <workItem from="1760993919687" duration="1151000" />
       <workItem from="1760995104327" duration="2877000" />
       <workItem from="1761090971024" duration="23000" />
-      <workItem from="1761094821288" duration="3525000" />
+      <workItem from="1761094821288" duration="8844000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial implementation of expense classifier and dataset generation&#10;&#10;- Introduced a new Python script for classifying expenses using a Perceptron model.&#10;- Generated a dataset of expenses and saved it as a CSV file.&#10;- Added .gitignore to exclude generated files.&#10;- Created necessary project configuration files for IDE.">
       <option name="closed" value="true" />
@@ -142,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760983209205</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add functions to demonstrate variable arguments and recursion in Python">
+      <option name="closed" value="true" />
+      <created>1761099522992</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1761099522992</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,11 +185,13 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$05_argumentos_variables.coverage" NAME="05_argumentos_variables Coverage Results" MODIFIED="1760977437909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
+    <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$10_sistema_inventario.coverage" NAME="10_sistema_inventario Coverage Results" MODIFIED="1761110792720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$04_regresar_tupla.coverage" NAME="04_regresar_tupla Coverage Results" MODIFIED="1760920777302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$Ejercicio_clasificador_costos_1_neurona.coverage" NAME="Ejercicio_clasificador_costos_1_neurona Coverage Results" MODIFIED="1760917735805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Redes_Neuronales" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$09_potencia_numero_recursividad.coverage" NAME="09_potencia_numero_recursividad Coverage Results" MODIFIED="1761098873870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$02_funciones_sumar.coverage" NAME="02_funciones_sumar Coverage Results" MODIFIED="1760978746178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$08_factorial_numero.coverage" NAME="08_factorial_numero Coverage Results" MODIFIED="1760983172962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
+    <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$dict_04_sistema_inventario.coverage" NAME="dict_04_sistema_inventario Coverage Results" MODIFIED="1761107760706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/02_colecciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$06_argumentos_variables_kwargs.coverage" NAME="06_argumentos_variables_kwargs Coverage Results" MODIFIED="1760977807669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$03_argumentos_por_nombres.coverage" NAME="03_argumentos_por_nombres Coverage Results" MODIFIED="1760920566221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$07_funciones_recursivas.coverage" NAME="07_funciones_recursivas Coverage Results" MODIFIED="1760993931044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />

@@ -1,5 +1,3 @@
-from tkinter.font import names
-
 inventario = []
 print('---------- SISTEMA DE INVENTARIOS ------------')
 cantidad_productos = int(input('Ingrese la cantidad de productos a agregar: '))
