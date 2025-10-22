@@ -1,4 +1,4 @@
-# Ejercicios del Curso de Python 
+# Ejercicios Python 
 
 Este repositorio contiene los ejercicios que he realizado como parte de mi aprendizaje en **Python**.  
 El objetivo es mostrar mi progreso en programación, desde lo más básico hasta pequeños proyectos.
