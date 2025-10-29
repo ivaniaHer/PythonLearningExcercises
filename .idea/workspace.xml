@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add chatbot implementation and password hashing utility">
+    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add custom audio player and enhance conversation saving functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mimi_ChatBot/chatbot_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mimi_ChatBot/chatbot_v4.py" afterDir="false" />
     </list>
@@ -120,7 +120,8 @@
       <workItem from="1761692692727" duration="1096000" />
       <workItem from="1761699204315" duration="6380000" />
       <workItem from="1761706206223" duration="155000" />
-      <workItem from="1761712497868" duration="1095000" />
+      <workItem from="1761712497868" duration="1200000" />
+      <workItem from="1761751246071" duration="104000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial implementation of expense classifier and dataset generation&#10;&#10;- Introduced a new Python script for classifying expenses using a Perceptron model.&#10;- Generated a dataset of expenses and saved it as a CSV file.&#10;- Added .gitignore to exclude generated files.&#10;- Created necessary project configuration files for IDE.">
       <option name="closed" value="true" />
@@ -226,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761620310528</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add custom audio player and enhance conversation saving functionality">
+      <option name="closed" value="true" />
+      <created>1761714378495</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1761714378495</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +253,8 @@
     <MESSAGE value="Add simple calculator and tax calculator implementations with input validation" />
     <MESSAGE value="Add Persona and Aritmetica classes with basic functionality" />
     <MESSAGE value="Add chatbot implementation and password hashing utility" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add chatbot implementation and password hashing utility" />
+    <MESSAGE value="Add custom audio player and enhance conversation saving functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add custom audio player and enhance conversation saving functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
