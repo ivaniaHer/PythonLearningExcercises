@@ -4,6 +4,8 @@ import io
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Dict, Optional
+from uuid import uuid4
+import base64
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -21,7 +23,7 @@ from openai import OpenAI
 #   * Resumen incremental de historial + ventana de últimos N turnos
 #   * Analítica opcional (toggle) y sentimiento incremental cacheado
 #   * Evita renders duplicados y recomputos innecesarios
-#   * Guardado/lectura cacheados
+#   * Guardado/lectura cacheados (incluye agenda)
 # =============================================================================
 
 # ------------------------------- Config base -------------------------------- #
@@ -83,25 +85,49 @@ DAILY_QUOTES = [
 ]
 
 # --------------------------- Utilidades y estilos --------------------------- #
-
 CSS = """
 <style>
+/* ------------------ (Default) Light Theme Variables ------------------ */
 :root {
-  --bg: #0b0f12;
-  --card: rgba(255, 255, 255, 0.06);
-  --card-strong: rgba(255,255,255,0.12);
-  --stroke: rgba(255,255,255,0.08);
-  --accent: #7bd389;
-  --accent-2: #50b070;
-  --text: #e8f2ec;
-  --muted: #a9b8b0;
+  --bg: #f0f2f6;
+  --card: #ffffff;
+  --card-strong: #f0f2f6;
+  --stroke: #e6e6e6;
+  --accent: #50b070;
+  --accent-2: #3e8e5a;
+  --text: #31333F;
+  --muted: #6e7078;
+  --input-text: #000000;
 }
 
+/* ------------------- Dark Theme Override Variables ------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f12;
+    --card: rgba(255, 255, 255, 0.06);
+    --card-strong: rgba(255,255,255,0.12);
+    --stroke: rgba(255,255,255,0.08);
+    --accent: #7bd389;
+    --accent-2: #50b070;
+    --text: #e8f2ec;
+    --muted: #a9b8b0;
+    --input-text: #e7efe9;
+  }
+}
+
+/* ---------------------------- Base Styles ---------------------------- */
 .stApp {
-  background: radial-gradient(1200px 600px at 20% -10%, #18342a 0%, transparent 60%),
-              radial-gradient(1000px 600px at 100% 0%, #1b1d3a 0%, transparent 60%),
-              linear-gradient(180deg, #0a0f13 0%, #0b0f12 100%);
-  color: var(--text) !important;
+  background: var(--bg); /* Usa el fondo de la variable */
+  color: var(--text);
+}
+
+/* --- Dark mode specific background --- */
+@media (prefers-color-scheme: dark) {
+  .stApp {
+    background: radial-gradient(1200px 600px at 20% -10%, #18342a 0%, transparent 60%),
+                radial-gradient(1000px 600px at 100% 0%, #1b1d3a 0%, transparent 60%),
+                linear-gradient(180deg, #0a0f13 0%, #0b0f12 100%);
+  }
 }
 
 .hero {
@@ -112,7 +138,7 @@ CSS = """
   margin-bottom: 14px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
 }
-.hero h1 { margin: 0; font-weight: 700; letter-spacing: .3px; }
+.hero h1 { margin: 0; font-weight: 700; letter-spacing: .3px; color: var(--text); }
 .hero p  { margin: 6px 0 0 0; color: var(--muted); }
 
 .chat-bubble {
@@ -121,9 +147,9 @@ CSS = """
   border-radius: 16px;
   padding: 12px 14px;
   margin: 6px 0 10px 0;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.22);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
 }
-.chat-bubble.user { background: rgba(255,255,255,0.04); }
+.chat-bubble.user { background: var(--card-strong); }
 .chat-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
 
 .kpi-card {
@@ -135,7 +161,7 @@ CSS = """
   height: 100%;
 }
 .kpi-title { color: var(--muted); font-size: .85rem; margin: 0 0 4px; }
-.kpi-value { font-size: 1.5rem; font-weight: 700; margin: 0; }
+.kpi-value { font-size: 1.5rem; font-weight: 700; margin: 0; color: var(--text); }
 
 .toolbar { display:flex; gap:10px; flex-wrap:wrap; margin: 6px 0 16px; }
 .toolbar button {
@@ -144,18 +170,67 @@ CSS = """
   padding: 8px 12px; cursor:pointer; box-shadow: 0 10px 24px rgba(50,170,110,.35);
 }
 .toolbar button.secondary {
-  background: rgba(255,255,255,0.06); color: var(--text);
+  background: var(--card-strong); color: var(--text);
   border: 1px solid var(--stroke); box-shadow: none;
 }
 
 hr.soft { border: none; border-top: 1px solid var(--stroke); margin: 10px 0; }
-textarea, input { color: #e7efe9 !important; }
+textarea, input { color: var(--input-text) !important; }
+
+/* ------------------- Estilos para el Reproductor de Audio Personalizado ------------------- */
+.custom-audio-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 999px; /* Completamente redondo */
+  padding: 6px;
+  margin-top: 10px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.play-pause-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  color: #04160c;
+  font-size: 16px;
+}
+
+.progress-bar-container {
+  flex-grow: 1;
+  height: 6px;
+  background-color: var(--card-strong);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--accent-2);
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+
+.hidden {
+    display: none;
+}
 </style>
 """
 
 if not st.session_state.get("_css_loaded"):
     st.markdown(CSS, unsafe_allow_html=True)
     st.session_state._css_loaded = True
+
 
 # --------------------------- Persistencia básica ---------------------------- #
 
@@ -171,10 +246,29 @@ def format_human_ts(ts_iso: Optional[str]) -> str:
         return "—"
 
 
-def save_conversation(conv_id: str, messages: List[Dict]):
+def save_conversation(conv_id: str, messages: List[Dict], tasks_df: Optional[pd.DataFrame] = None):
     CONV_DIR.mkdir(exist_ok=True)
     conv_path = CONV_DIR / f"{conv_id}.json"
-    conv_data = {"conv_id": conv_id, "timestamp_utc": utc_now_iso(), "messages": messages}
+    conv_data = {
+        "conv_id": conv_id,
+        "timestamp_utc": utc_now_iso(),
+        "messages": messages,
+    }
+    if tasks_df is None:
+        tasks_df = st.session_state.get("tasks_df")
+
+    if tasks_df is not None:
+        try:
+            df_to_save = tasks_df.copy()
+            if 'fecha' in df_to_save.columns:
+                df_to_save['fecha'] = df_to_save['fecha'].apply(
+                    lambda x: x.isoformat() if pd.notna(x) else None
+                )
+            conv_data["tasks"] = df_to_save.to_dict(orient="records")
+        except Exception as e:
+            st.error(f"Error al preparar tareas para guardar: {e}")
+            conv_data["tasks"] = []
+
     with conv_path.open("w", encoding="utf-8") as f:
         json.dump(conv_data, f, ensure_ascii=False, indent=2)
 
@@ -192,7 +286,8 @@ def list_conversations() -> List[Dict]:
             user_msgs = [m.get("content", "") for m in data.get("messages", []) if m.get("role") == "user"]
             title = (user_msgs[0][:40] + "...") if user_msgs else "Conversación"
             ts = data.get("timestamp_utc")
-            items.append({"id": f.stem, "title": title, "date": format_human_ts(ts), "size": len(data.get("messages", []))})
+            items.append(
+                {"id": f.stem, "title": title, "date": format_human_ts(ts), "size": len(data.get("messages", []))})
         except Exception:
             continue
     return items
@@ -205,6 +300,23 @@ def load_conversation(conv_id: str) -> Optional[List[Dict]]:
     try:
         with p.open("r", encoding="utf-8") as fh:
             data = json.load(fh)
+
+        tasks = data.get("tasks")
+        if tasks is not None and tasks:
+            try:
+                df = pd.DataFrame(tasks)
+                if 'fecha' in df.columns:
+                    df['fecha'] = pd.to_datetime(df['fecha'], errors='coerce').dt.date
+                st.session_state.tasks_df = df
+                if 'id' in df.columns and not df['id'].empty:
+                    st.session_state.next_task_id = df['id'].max() + 1
+                else:
+                    st.session_state.next_task_id = 1
+            except Exception:
+                pass
+        else:
+            st.session_state.next_task_id = 1
+
         return data.get("messages", [])
     except Exception:
         st.error("😕 El archivo de la conversación está dañado.")
@@ -247,7 +359,7 @@ def generate_response(client: OpenAI, model: str, messages: List[Dict]) -> Optio
                 txt = str(resp.output)
             return (txt or "").strip()
         except Exception as e:
-            st.error(f"⚠️ Error al generar respuesta: {e}")
+            st.error(f"Error al generar respuesta: {e}")
             return None
 
 
@@ -258,6 +370,7 @@ def generate_audio(client: OpenAI, text: str) -> Optional[bytes]:
     except Exception as e:
         st.warning(f"No se pudo generar el audio: {e}")
         return None
+
 
 # ---------------------------- Estado de sesión ----------------------------- #
 
@@ -276,17 +389,23 @@ def init_state():
         st.session_state.model = DEFAULT_MODELS[0]
     if "tasks_df" not in st.session_state:
         st.session_state.tasks_df = pd.DataFrame([
-            {"tarea": "", "fecha": None, "estado": "pendiente", "nota": ""}
+            {"id": 0, "tarea": "Agrega aqui tus eventos", "fecha": datetime.now().date(), "estado": "Pendiente",
+             "nota": ""}
         ])
-    # ---- Optimizaciones ----
+    if "next_task_id" not in st.session_state:
+        if not st.session_state.tasks_df.empty and 'id' in st.session_state.tasks_df.columns:
+            st.session_state.next_task_id = st.session_state.tasks_df['id'].max() + 1
+        else:
+            st.session_state.next_task_id = 1
+
     if "history_summary" not in st.session_state:
-        st.session_state.history_summary = ""  # resumen acumulado para contexto
+        st.session_state.history_summary = ""
     if "max_context_turns" not in st.session_state:
-        st.session_state.max_context_turns = 14  # últimos N turnos enviados al modelo
+        st.session_state.max_context_turns = 14
     if "sentiment_cache" not in st.session_state:
-        st.session_state.sentiment_cache = {}  # ts -> score
+        st.session_state.sentiment_cache = {}
     if "analytics_enabled" not in st.session_state:
-        st.session_state.analytics_enabled = False  # analítica on-demand
+        st.session_state.analytics_enabled = False
 
 
 def start_new_chat():
@@ -294,6 +413,7 @@ def start_new_chat():
     st.session_state.conv_id = f"conv_{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}"
     st.cache_data.clear()
     st.rerun()
+
 
 # ------------------------------ Componentes UI ----------------------------- #
 
@@ -318,7 +438,8 @@ def sidebar():
                 st.session_state.messages[0]["content"] = build_system_prompt()
                 st.session_state.messages[0]["ts"] = utc_now_iso()
             else:
-                st.session_state.messages.insert(0, {"role": "system", "content": build_system_prompt(), "ts": utc_now_iso()})
+                st.session_state.messages.insert(0, {"role": "system", "content": build_system_prompt(),
+                                                     "ts": utc_now_iso()})
 
         st.session_state.model = st.selectbox("Modelo", DEFAULT_MODELS, index=0)
         st.session_state.tts_enabled = st.toggle("🔊 Activar audio (TTS)", value=st.session_state.tts_enabled)
@@ -348,7 +469,6 @@ def sidebar():
                     st.rerun()
 
         st.markdown("---")
-        # Dashboard motivacional
         streak = calc_streak_days(st.session_state.messages)
         completion = calc_completion_percent(st.session_state.tasks_df)
         quote = DAILY_QUOTES[hash(st.session_state.conv_id) % len(DAILY_QUOTES)]
@@ -357,7 +477,6 @@ def sidebar():
         st.caption(f"💡 {quote}")
 
         st.markdown("---")
-        # Exportaciones
         conv_path = CONV_DIR / f"{st.session_state.conv_id}.json"
         if conv_path.exists():
             with open(conv_path, "rb") as f:
@@ -379,7 +498,8 @@ def sidebar():
         )
 
         st.markdown("---")
-        st.caption("Consejo: puedes anclar esta app en tu dock o abrir en modo pantalla completa para sesiones de estudio.")
+        st.caption(
+            "Consejo: puedes anclar esta app en tu dock o abrir en modo pantalla completa para sesiones de estudio.")
 
 
 def hero_and_toolbar():
@@ -409,7 +529,7 @@ def hero_and_toolbar():
             start_new_chat()
     with colB:
         if st.button("💾 Guardar ahora", use_container_width=True):
-            save_conversation(st.session_state.conv_id, st.session_state.messages)
+            save_conversation(st.session_state.conv_id, st.session_state.messages, st.session_state.tasks_df)
             st.toast("💾 Guardado.")
     with colC:
         if st.button("📎 Copiar último", use_container_width=True):
@@ -457,10 +577,10 @@ def render_chat():
             st.markdown(f"<div class='{css_class}'>", unsafe_allow_html=True)
             ts = message.get("ts") or utc_now_iso()
             st.markdown(
-                f"<div class='chat-meta'>{'Mimi' if message['role']=='assistant' else 'Tú'} • {format_human_ts(ts)}</div>",
+                f"<div class='chat-meta'>{'Mimi' if message['role'] == 'assistant' else 'Tú'} • {format_human_ts(ts)}</div>",
                 unsafe_allow_html=True,
             )
-            st.markdown(message["content"])  # permitir markdown
+            st.markdown(message["content"])
             st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -474,6 +594,78 @@ def conversation_to_markdown(messages: List[Dict]) -> str:
         lines.append(f"{who} _( {stamp} )_:\n\n{m['content']}\n")
     return "\n".join(lines)
 
+
+def custom_audio_player(audio_bytes: bytes):
+    """Genera un reproductor de audio HTML/CSS/JS personalizado y minimalista."""
+    b64 = base64.b64encode(audio_bytes).decode()
+    player_id = f"player-{uuid4()}"
+
+    html = f"""
+    <div class="custom-audio-player" id="{player_id}">
+        <audio class="audio-element">
+            <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+        </audio>
+        <div class="play-pause-btn">
+            <span class="play-icon"> ▶️ </span>
+            <span class="pause-icon hidden"> ⏸️ </span>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+    <script>
+        const player = document.getElementById('{player_id}');
+        const audio = player.querySelector('.audio-element');
+        const playPauseBtn = player.querySelector('.play-pause-btn');
+        const playIcon = player.querySelector('.play-icon');
+        const pauseIcon = player.querySelector('.pause-icon');
+        const progressBar = player.querySelector('.progress-bar');
+
+        playPauseBtn.addEventListener('click', () => {{
+            if (audio.paused) {{
+                document.querySelectorAll('audio').forEach(el => {{
+                    el.pause();
+                    const otherPlayer = el.closest('.custom-audio-player');
+                    if (otherPlayer && otherPlayer.id !== '{player_id}') {{
+                         otherPlayer.querySelector('.play-icon').classList.remove('hidden');
+                         otherPlayer.querySelector('.pause-icon').classList.add('hidden');
+                    }}
+                }});
+                audio.play();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            }} else {{
+                audio.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            }}
+        }});
+
+        audio.addEventListener('ended', () => {{
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+            progressBar.style.width = '0%';
+        }});
+
+        audio.addEventListener('pause', () => {{
+             if (audio.currentTime > 0 && audio.currentTime < audio.duration) {{
+                // Paused by user, not ended
+             }} else {{
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+             }}
+        }});
+
+        audio.addEventListener('timeupdate', () => {{
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${{percent}}%`;
+        }});
+    </script>
+    """
+    st.components.v1.html(html, height=50)
+
+
 # --------------------------------- Main ------------------------------------ #
 
 def main():
@@ -482,36 +674,40 @@ def main():
     hero_and_toolbar()
 
     is_new_chat = len(st.session_state.messages) <= 1
-
     choice = suggestion_chips() if is_new_chat else None
 
-    tab_chat, tab_agenda, tab_coach, tab_analytics = st.tabs(["💬 Chat", "🗓️ Agenda", "🧑‍🏫 Coach semanal", "📊 Analítica"])
+    tab_chat, tab_agenda, tab_coach, tab_analytics = st.tabs(
+        ["💬 Chat", "🗓️ Agenda", "🧑‍🏫 Coach semanal", "📊 Analítica"])
 
     with tab_chat:
-        # 1) Render historial
         render_chat()
-        # 2) Input
+
+        if "last_audio" in st.session_state and st.session_state.last_audio:
+            custom_audio_player(st.session_state.last_audio.getvalue())
+            st.session_state.last_audio = None
+
         user_input = st.chat_input("Escribe tu mensaje…")
         prompt = choice or user_input
-        # 3) Proceso de turno
+
         if prompt:
             st.session_state.messages.append({"role": "user", "content": prompt, "ts": utc_now_iso()})
-            # payload compacto
+
             compact_msgs = prepare_messages_for_model(st.session_state.messages)
             with st.spinner("💭 Mimi está pensando…"):
                 client = st.session_state.client
-                if client is None:
-                    st.stop()
+                if client is None: st.stop()
                 answer = generate_response(client, st.session_state.model, compact_msgs)
+
             if answer:
-                ts_assistant = utc_now_iso()
-                st.session_state.messages.append({"role": "assistant", "content": answer, "ts": ts_assistant})
+                st.session_state.messages.append({"role": "assistant", "content": answer, "ts": utc_now_iso()})
                 if st.session_state.tts_enabled:
                     audio = generate_audio(st.session_state.client, answer)
                     if audio:
-                        st.audio(io.BytesIO(audio))
-            save_conversation(st.session_state.conv_id, st.session_state.messages)
-            st.cache_data.clear()
+                        st.session_state.last_audio = io.BytesIO(audio)
+                else:
+                    st.session_state.last_audio = None
+
+            save_conversation(st.session_state.conv_id, st.session_state.messages, st.session_state.tasks_df)
             st.rerun()
 
     with tab_agenda:
@@ -534,6 +730,7 @@ def main():
             - Cambia la **Personalidad** de Mimi para adaptar el estilo de ayuda.
             """
         )
+
 
 # ----------------------------- Helpers nuevos ------------------------------ #
 
@@ -558,7 +755,8 @@ def prepare_messages_for_model(messages: List[Dict]) -> List[Dict]:
                 client = st.session_state.client
                 try:
                     summary_prompt = [
-                        {"role": "system", "content": "Resume objetivamente el diálogo para mantener contexto para un tutor personal. Sé breve (<= 250 palabras)."},
+                        {"role": "system",
+                         "content": "Resume objetivamente el diálogo para mantener contexto para un tutor personal. Sé breve (<= 250 palabras)."},
                         {"role": "user", "content": old_text},
                     ]
                     resp = client.chat.completions.create(
@@ -601,63 +799,81 @@ def calc_streak_days(messages: List[Dict]) -> int:
 def calc_completion_percent(df: pd.DataFrame) -> int:
     try:
         total = len(df)
-        done = (df['estado'].str.lower() == 'hecha').sum()
+        done = (df['estado'].astype(str).str.lower() == 'hecha').sum()
         return int(round((done / total) * 100)) if total else 0
     except Exception:
         return 0
+
 
 # ------------------------------ Agenda / Planner --------------------------- #
 
 def planner_ui():
     st.subheader("🗓️ Agenda / planificador")
-    st.caption("Organiza tus tareas y expórtalas a tu calendario.")
+    st.caption("Edita tus tareas. Los cambios se aplican al hacer clic en '✅ Aplicar cambios'.")
 
-    # --- Pre-procesamiento para el editor ---
-    # Creamos una copia para el display y nos aseguramos de que el tipo de fecha sea correcto.
-    df_display = st.session_state.tasks_df.copy()
-    df_display['fecha'] = pd.to_datetime(df_display['fecha'], errors='coerce')
+    if 'id' not in st.session_state.tasks_df.columns:
+        st.session_state.tasks_df.insert(0, 'id', range(st.session_state.next_task_id,
+                                                        st.session_state.next_task_id + len(st.session_state.tasks_df)))
+        st.session_state.next_task_id += len(st.session_state.tasks_df)
 
-    # --- CORRECCIÓN CLAVE ---
-    # Asignamos el resultado del editor directamente de vuelta a la clave del estado de sesión.
-    # Esto soluciona el problema de la recarga y la pérdida del primer carácter.
-    st.session_state.tasks_df = st.data_editor(
-        df_display,
-        num_rows="dynamic",
-        use_container_width=True,
-        column_config={
-            "tarea": st.column_config.TextColumn("Tarea", required=True),
-            "fecha": st.column_config.DateColumn("Fecha", format="YYYY-MM-DD", step=1),
-            "estado": st.column_config.SelectboxColumn("Estado", options=["Pendiente", "Hecha"], default="Pendiente"),
-            "nota": st.column_config.TextColumn("Nota"),
-        },
-        key="tasks_editor",
-    )
+    cols = ['id'] + [col for col in st.session_state.tasks_df.columns if col != 'id']
+    base_df = st.session_state.tasks_df[cols]
 
-    # El resto de la función ahora utiliza el st.session_state.tasks_df ya actualizado.
+    with st.form("agenda_form", clear_on_submit=False):
+        edited = st.data_editor(
+            base_df,
+            num_rows="dynamic",
+            use_container_width=True,
+            column_config={
+                "id": st.column_config.NumberColumn("ID", disabled=True),
+                "tarea": st.column_config.TextColumn("Tarea", required=True),
+                "fecha": st.column_config.DateColumn("Fecha", format="YYYY-MM-DD", step=1),
+                "estado": st.column_config.SelectboxColumn("Estado", options=["Pendiente", "Hecha"],
+                                                           default="Pendiente"),
+                "nota": st.column_config.TextColumn("Nota"),
+            },
+            key="tasks_editor",
+        )
+        submitted = st.form_submit_button("✅ Aplicar cambios", use_container_width=True)
+
+    if submitted:
+        new_rows_mask = pd.isna(edited['id'])
+        num_new_rows = new_rows_mask.sum()
+        if num_new_rows > 0:
+            new_ids = range(st.session_state.next_task_id, st.session_state.next_task_id + num_new_rows)
+            edited.loc[new_rows_mask, 'id'] = list(new_ids)
+            st.session_state.next_task_id += num_new_rows
+
+        edited['id'] = edited['id'].astype(int)
+        edited['fecha'] = pd.to_datetime(edited['fecha'], errors='coerce').dt.date
+        edited['estado'] = edited['estado'].fillna('Pendiente').astype(str)
+
+        final_cols = ['id', 'tarea', 'fecha', 'estado', 'nota']
+        st.session_state.tasks_df = edited[final_cols]
+        st.toast("Cambios aplicados a la agenda ✅")
+
     col1, col2, col3 = st.columns([1, 1, 1])
     with col1:
-        if st.button("💾 Guardar Agenda", use_container_width=True):
-            save_conversation(st.session_state.conv_id, st.session_state.messages)
-            st.toast("Agenda guardada (junto con la conversación).")
+        if st.button("Guardar Agenda en historial", use_container_width=True):
+            save_conversation(st.session_state.conv_id, st.session_state.messages, st.session_state.tasks_df)
+            st.toast("Agenda guardada en el archivo de la conversación.")
     with col2:
-        csv_bytes = st.session_state.tasks_df.to_csv(index=False).encode("utf-8")
-        st.download_button("📥 Exportar CSV", data=csv_bytes, file_name="agenda.csv", mime="text/csv",
+        csv_bytes = st.session_state.tasks_df.drop(columns=['id'], errors='ignore').to_csv(index=False).encode("utf-8")
+        st.download_button("Exportar CSV", data=csv_bytes, file_name="agenda.csv", mime="text/csv",
                            use_container_width=True)
     with col3:
         ics_text = df_to_ics(st.session_state.tasks_df)
-        st.download_button("📆 Exportar ICS", data=ics_text.encode("utf-8"), file_name="agenda.ics",
+        st.download_button("Exportar ICS", data=ics_text.encode("utf-8"), file_name="agenda.ics",
                            mime="text/calendar", use_container_width=True)
 
     st.markdown("---")
-    st.subheader("📅 Vista de Calendario (Tareas del Mes)")
+    st.subheader("📅 Tareas del Mes")
     try:
         task_with_dates = st.session_state.tasks_df.copy()
-        # Pequeña corrección aquí: debe usar 'task_with_dates['fecha']' para la conversión
         task_with_dates['fecha'] = pd.to_datetime(task_with_dates['fecha'], errors='coerce')
         task_with_dates.dropna(subset=['fecha'], inplace=True)
 
         if not task_with_dates.empty:
-            # --- Tu lógica personalizada para el selector de mes (se mantiene intacta) ---
             today = datetime.now()
             start_date = today - pd.DateOffset(months=1)
             end_date = today + pd.DateOffset(years=1)
@@ -693,13 +909,20 @@ def planner_ui():
     except Exception as e:
         st.warning(f"No se pudo generar la vista de calendario: {e}")
 
+
 def df_to_ics(df: pd.DataFrame) -> str:
     def ics_event(row: pd.Series) -> str:
-        date_str = str(row.get("fecha", ""))
+        date_val = row.get("fecha", "")
+        date_str = ""
+        if pd.notna(date_val):
+            try:
+                date_str = pd.to_datetime(date_val).strftime("%Y-%m-%d")
+            except Exception:
+                date_str = str(date_val)
         dt = (date_str.replace("-", "") + "T090000Z") if date_str else datetime.utcnow().strftime("%Y%m%dT090000Z")
         summary = (row.get("tarea") or "Tarea").replace("\n", " ")
         desc = (row.get("nota") or "").replace("\n", " ")
-        uid = f"{abs(hash(summary + dt))}@mimi"
+        uid = f"{row.get('id', abs(hash(summary + dt)))}@mimi"  # Usar ID de tarea si existe
         return (
             "BEGIN:VEVENT\n"
             f"UID:{uid}\n"
@@ -710,15 +933,16 @@ def df_to_ics(df: pd.DataFrame) -> str:
             "END:VEVENT\n"
         )
 
-    events = "".join([ics_event(r) for _, r in df.iterrows() if str(r.get("fecha", ""))])
+    events = "".join([ics_event(r) for _, r in df.iterrows()])
     ics = (
-        "BEGIN:VCALENDAR\n"
-        "VERSION:2.0\n"
-        "PRODID:-//Mimi//Planner//ES\n"
-        + events +
-        "END:VCALENDAR\n"
+            "BEGIN:VCALENDAR\n"
+            "VERSION:2.0\n"
+            "PRODID:-//Mimi//Planner//ES\n"
+            + events +
+            "END:VCALENDAR\n"
     )
     return ics
+
 
 # ------------------------------ Coach semanal ------------------------------ #
 
@@ -726,7 +950,7 @@ def coach_weekly_ui():
     st.subheader("🧑‍🏫 Coach semanal")
     st.caption("Genera un resumen de la semana: aprendizajes, consejos y próximos pasos. Guarda como PDF.")
 
-    if st.button("📝 Generar resumen", use_container_width=True):
+    if st.button("Generar resumen", use_container_width=True):
         client = st.session_state.client
         if client is None:
             st.warning("Configura tu API Key primero.")
@@ -737,13 +961,15 @@ def coach_weekly_ui():
                 st.success("Resumen generado")
                 st.markdown(summary)
                 pdf_bytes = summary_to_pdf(summary)
-                st.download_button("📄 Descargar PDF", data=pdf_bytes, file_name="resumen_semanal.pdf", mime="application/pdf", use_container_width=True)
+                st.download_button("Descargar PDF", data=pdf_bytes, file_name="resumen_semanal.pdf",
+                                   mime="application/pdf", use_container_width=True)
 
 
 def build_weekly_summary(client: OpenAI, model: str, messages: List[Dict]) -> Optional[str]:
     recent = messages[-50:]
     prompt = [
-        {"role": "system", "content": "Eres un coach que hace resúmenes semanales claros, con secciones: 'Lo aprendido', 'Consejos', 'Próximos pasos'. Usa tono cálido y accionable."},
+        {"role": "system",
+         "content": "Eres un coach que hace resúmenes semanales claros, con secciones: 'Lo aprendido', 'Consejos', 'Próximos pasos'. Usa tono cálido y accionable."},
         {"role": "user", "content": "Usa esta conversación para crear el resumen semanal."},
         {"role": "user", "content": json.dumps(recent, ensure_ascii=False)},
     ]
@@ -752,7 +978,9 @@ def build_weekly_summary(client: OpenAI, model: str, messages: List[Dict]) -> Op
         return (resp.choices[0].message.content or "").strip()
     except Exception:
         try:
-            resp = client.responses.create(model=model, input=[{"role": "user", "content": json.dumps(recent, ensure_ascii=False)}], max_output_tokens=700)
+            resp = client.responses.create(model=model,
+                                           input=[{"role": "user", "content": json.dumps(recent, ensure_ascii=False)}],
+                                           max_output_tokens=700)
             return (getattr(resp, "output_text", "") or "").strip()
         except Exception as e:
             st.error(f"No se pudo generar el resumen: {e}")
@@ -775,13 +1003,15 @@ def summary_to_pdf(text: str) -> bytes:
     buffer.seek(0)
     return buffer.read()
 
+
 # ------------------------------ Analítica ---------------------------------- #
 
 def analytics_ui():
     st.subheader("📊 Analítica de progreso")
     st.caption("Temas más hablados, sentimiento y evolución.")
 
-    st.session_state.analytics_enabled = st.toggle("Activar analítica en vivo", value=st.session_state.analytics_enabled)
+    st.session_state.analytics_enabled = st.toggle("Activar analítica en vivo",
+                                                   value=st.session_state.analytics_enabled)
     if not st.session_state.analytics_enabled:
         st.info("Analítica desactivada para ahorrar CPU/RAM. Actívala cuando la necesites.")
         return
@@ -797,7 +1027,7 @@ def analytics_ui():
         if sentiments:
             df = pd.DataFrame({"t": list(range(len(sentiments))), "sent": sentiments})
             fig, ax = plt.subplots()
-            ax.plot(df["t"], df["sent"])  # No estilos/colores personalizados
+            ax.plot(df["t"], df["sent"])
             ax.set_xlabel("Turno de conversación")
             ax.set_ylabel("Sentimiento (-1 a 1)")
             ax.set_title("Evolución del sentimiento")
@@ -832,17 +1062,17 @@ def compute_sentiment_series(messages: List[Dict]) -> List[float]:
             series.append(st.session_state.sentiment_cache[key])
             continue
         text = m.get("content", "") or ""
-        # Heurística barata por defecto
         val = heuristic_sentiment(text)
-        # Modelo solo para los 5 últimos (si quieres precisión reciente)
         try_model = (idx >= len(user_msgs) - 5)
         if try_model:
             try:
                 prompt = [
-                    {"role": "system", "content": "Devuelve SOLO un número entre -1 (muy negativo) y 1 (muy positivo), con 0 como neutral."},
+                    {"role": "system",
+                     "content": "Devuelve SOLO un número entre -1 (muy negativo) y 1 (muy positivo), con 0 como neutral."},
                     {"role": "user", "content": text},
                 ]
-                resp = client.chat.completions.create(model=st.session_state.model, messages=prompt, temperature=0, max_tokens=5)
+                resp = client.chat.completions.create(model=st.session_state.model, messages=prompt, temperature=0,
+                                                      max_tokens=5)
                 raw = (resp.choices[0].message.content or "").strip().split()[0]
                 val = float(raw)
             except Exception:
@@ -860,6 +1090,7 @@ def heuristic_sentiment(text: str) -> float:
     if pos == neg == 0:
         return 0.0
     return (pos - neg) / max(1, (pos + neg))
+
 
 # ------------------------------ Entry point -------------------------------- #
 if __name__ == "__main__":
