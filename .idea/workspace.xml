@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add custom audio player and enhance conversation saving functionality">
+    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Rename chatbot_v4.py to chatbot_v5.py and remove deprecated comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mimi_ChatBot/chatbot_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mimi_ChatBot/chatbot_v4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mimi_ChatBot/chatbot_v5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mimi_ChatBot/chatbot_v5.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,44 +50,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.01_persona.executor&quot;: &quot;Run&quot;,
-    &quot;Python.02_clase_aritmetica.executor&quot;: &quot;Run&quot;,
-    &quot;Python.02_funciones_sumar.executor&quot;: &quot;Run&quot;,
-    &quot;Python.03_argumentos_por_nombres.executor&quot;: &quot;Run&quot;,
-    &quot;Python.04_regresar_tupla.executor&quot;: &quot;Run&quot;,
-    &quot;Python.05_argumentos_variables.executor&quot;: &quot;Run&quot;,
-    &quot;Python.06_argumentos_variables_kwargs.executor&quot;: &quot;Run&quot;,
-    &quot;Python.07_funciones_recursivas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.08_factorial_numero.executor&quot;: &quot;Run&quot;,
-    &quot;Python.09_potencia_numero_recursividad.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.10_sistema_inventario.executor&quot;: &quot;Run&quot;,
-    &quot;Python.11_maquina_snacks.executor&quot;: &quot;Run&quot;,
-    &quot;Python.12_calculadora_funciones.executor&quot;: &quot;Run&quot;,
-    &quot;Python.13_calc_impuestos.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Ejercicio_clasificador_costos_1_neurona.executor&quot;: &quot;Run&quot;,
-    &quot;Python.chatbot_v4.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dict_04_sistema_inventario.executor&quot;: &quot;Run&quot;,
-    &quot;Python.generate_passwords.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Confirmation&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.01_persona.executor": "Run",
+    "Python.02_clase_aritmetica.executor": "Run",
+    "Python.02_funciones_sumar.executor": "Run",
+    "Python.03_argumentos_por_nombres.executor": "Run",
+    "Python.04_regresar_tupla.executor": "Run",
+    "Python.05_argumentos_variables.executor": "Run",
+    "Python.06_argumentos_variables_kwargs.executor": "Run",
+    "Python.07_funciones_recursivas.executor": "Run",
+    "Python.08_factorial_numero.executor": "Run",
+    "Python.09_potencia_numero_recursividad.executor": "Debug",
+    "Python.10_sistema_inventario.executor": "Run",
+    "Python.11_maquina_snacks.executor": "Run",
+    "Python.12_calculadora_funciones.executor": "Run",
+    "Python.13_calc_impuestos.executor": "Run",
+    "Python.Ejercicio_clasificador_costos_1_neurona.executor": "Run",
+    "Python.chatbot_v4.executor": "Run",
+    "Python.dict_04_sistema_inventario.executor": "Run",
+    "Python.generate_passwords.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -121,7 +121,8 @@
       <workItem from="1761699204315" duration="6380000" />
       <workItem from="1761706206223" duration="155000" />
       <workItem from="1761712497868" duration="1200000" />
-      <workItem from="1761751246071" duration="104000" />
+      <workItem from="1761751246071" duration="208000" />
+      <workItem from="1761753051899" duration="1207000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial implementation of expense classifier and dataset generation&#10;&#10;- Introduced a new Python script for classifying expenses using a Perceptron model.&#10;- Generated a dataset of expenses and saved it as a CSV file.&#10;- Added .gitignore to exclude generated files.&#10;- Created necessary project configuration files for IDE.">
       <option name="closed" value="true" />
@@ -235,7 +236,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761714378495</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Rename chatbot_v4.py to chatbot_v5.py and remove deprecated comments">
+      <option name="closed" value="true" />
+      <created>1761751410441</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1761751410442</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +263,8 @@
     <MESSAGE value="Add Persona and Aritmetica classes with basic functionality" />
     <MESSAGE value="Add chatbot implementation and password hashing utility" />
     <MESSAGE value="Add custom audio player and enhance conversation saving functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add custom audio player and enhance conversation saving functionality" />
+    <MESSAGE value="Rename chatbot_v4.py to chatbot_v5.py and remove deprecated comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename chatbot_v4.py to chatbot_v5.py and remove deprecated comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

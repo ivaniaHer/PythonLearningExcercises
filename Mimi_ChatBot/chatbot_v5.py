@@ -6,12 +6,10 @@ from pathlib import Path
 from typing import List, Dict, Optional
 from uuid import uuid4
 import base64
-
 import pandas as pd
 import matplotlib.pyplot as plt
 from reportlab.pdfgen import canvas as pdf_canvas
 from reportlab.lib.pagesizes import LETTER
-
 import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -38,6 +36,7 @@ PERSONAS = {
     "Mimi Coach": "Haces preguntas poderosas, reflejas emociones y generas planes con métricas e hitos medibles.",
 }
 
+
 PROMPT_MIMI = (
     "Eres Mimi, una tutora virtual cercana, empática y profesional. "
     "Tu especialidad es el desarrollo personal, hábitos, productividad y organización. "
@@ -45,6 +44,7 @@ PROMPT_MIMI = (
     "Si te preguntan quién eres, responde siempre identificándote como 'Mimi, tu tutora virtual'. "
     "Usa algunos emojis para hacer tus respuestas más cálidas y cercanas. 🌸✨"
 )
+
 
 QUICK_SUGGESTIONS = [
     "Dame un plan para ser más productivo",
@@ -235,8 +235,8 @@ def format_human_ts(ts_iso: Optional[str]) -> str:
     except Exception:
         return "—"
 
-
-def save_conversation(conv_id: str, messages: List[Dict], tasks_df: Optional[pd.DataFrame] = None):
+def save_conversation(conv_id: str, messages: List[Dict],
+                      tasks_df: Optional[pd.DataFrame] = None):
     CONV_DIR.mkdir(exist_ok=True)
     conv_path = CONV_DIR / f"{conv_id}.json"
     conv_data = {
@@ -261,7 +261,6 @@ def save_conversation(conv_id: str, messages: List[Dict], tasks_df: Optional[pd.
 
     with conv_path.open("w", encoding="utf-8") as f:
         json.dump(conv_data, f, ensure_ascii=False, indent=2)
-
 
 @st.cache_data(show_spinner=False)
 def list_conversations() -> List[Dict]:
@@ -403,7 +402,6 @@ def start_new_chat():
     st.session_state.conv_id = f"conv_{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}"
     st.cache_data.clear()
     st.rerun()
-
 
 # ------------------------------ Componentes UI ----------------------------- #
 
