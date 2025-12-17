@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add Persona class with basic functionality and object counter">
-      <change afterPath="$PROJECT_DIR$/04_clases_objetos/Sistema_Empleados/empleado.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04_clases_objetos/Sistema_Empleados/empresa.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04_clases_objetos/Sistema_Empleados/sistema_empleados_app.py" afterDir="false" />
+    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add Empresa and Empleado classes with functionality for employee management">
+      <change afterPath="$PROJECT_DIR$/04_clases_objetos/Sistema_Biblioteca/biblioteca.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/04_clases_objetos/Sistema_Biblioteca/libro.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/04_clases_objetos/Sistema_Biblioteca/sistema_biblioteca_app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04_clases_objetos/03_contador_personas.py" beforeDir="false" afterPath="$PROJECT_DIR$/04_clases_objetos/04_contador_personas.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,10 +71,12 @@
     "Python.12_calculadora_funciones.executor": "Run",
     "Python.13_calc_impuestos.executor": "Run",
     "Python.Ejercicio_clasificador_costos_1_neurona.executor": "Run",
+    "Python.biblioteca.executor": "Run",
     "Python.chatbot_v4.executor": "Run",
     "Python.dict_04_sistema_inventario.executor": "Run",
     "Python.empresa.executor": "Run",
     "Python.generate_passwords.executor": "Run",
+    "Python.sistema_biblioteca_app.executor": "Run",
     "Python.sistema_empleados_app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -133,6 +134,7 @@
       <workItem from="1762007003152" duration="86000" />
       <workItem from="1762470815260" duration="151000" />
       <workItem from="1765844937628" duration="4221000" />
+      <workItem from="1765931891079" duration="2881000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial implementation of expense classifier and dataset generation&#10;&#10;- Introduced a new Python script for classifying expenses using a Perceptron model.&#10;- Generated a dataset of expenses and saved it as a CSV file.&#10;- Added .gitignore to exclude generated files.&#10;- Created necessary project configuration files for IDE.">
       <option name="closed" value="true" />
@@ -262,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765847589094</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add Empresa and Empleado classes with functionality for employee management">
+      <option name="closed" value="true" />
+      <created>1765931963477</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1765931963477</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +293,8 @@
     <MESSAGE value="Add custom audio player and enhance conversation saving functionality" />
     <MESSAGE value="Rename chatbot_v4.py to chatbot_v5.py and remove deprecated comments" />
     <MESSAGE value="Add Persona class with basic functionality and object counter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Persona class with basic functionality and object counter" />
+    <MESSAGE value="Add Empresa and Empleado classes with functionality for employee management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Empresa and Empleado classes with functionality for employee management" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -307,8 +318,10 @@
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$05_argumentos_variables.coverage" NAME="05_argumentos_variables Coverage Results" MODIFIED="1760977437909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$dict_04_sistema_inventario.coverage" NAME="dict_04_sistema_inventario Coverage Results" MODIFIED="1761107760706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/02_colecciones" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$sistema_empleados_app.coverage" NAME="sistema_empleados_app Coverage Results" MODIFIED="1765849132773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos/Sistema_Empleados" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$biblioteca.coverage" NAME="biblioteca Coverage Results" MODIFIED="1765934691770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos/Sistema_Biblioteca" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$10_sistema_inventario.coverage" NAME="10_sistema_inventario Coverage Results" MODIFIED="1761110792720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$13_calc_impuestos.coverage" NAME="13_calc_impuestos Coverage Results" MODIFIED="1761284958470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$sistema_biblioteca_app.coverage" NAME="sistema_biblioteca_app Coverage Results" MODIFIED="1765934696566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos/Sistema_Biblioteca" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$chatbot_v4.coverage" NAME="chatbot_v4 Coverage Results" MODIFIED="1761613755476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Mimi_ChatBot" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$02_clase_aritmetica.coverage" NAME="02_clase_aritmetica Coverage Results" MODIFIED="1761363138238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$12_calculadora_funciones.coverage" NAME="12_calculadora_funciones Coverage Results" MODIFIED="1761281471788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
