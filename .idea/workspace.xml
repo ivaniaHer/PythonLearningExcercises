@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add classes for computer peripherals and implement basic functionality">
-      <change afterPath="$PROJECT_DIR$/06_temas_avanzados/comprension_listas.py" afterDir="false" />
+    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add list comprehension examples for filtering even numbers">
+      <change afterPath="$PROJECT_DIR$/06_temas_avanzados/decoradores.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06_temas_avanzados/expresiones_generadoras.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06_temas_avanzados/funciones_lambda.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06_temas_avanzados/generadores.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06_temas_avanzados/ordenamiento.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,17 +78,23 @@
     "Python.clase_object.executor": "Run",
     "Python.comprension_listas.executor": "Run",
     "Python.computadora.executor": "Run",
+    "Python.decoradores.executor": "Run",
     "Python.dict_04_sistema_inventario.executor": "Run",
     "Python.empresa.executor": "Run",
+    "Python.expresiones_generadoras.executor": "Run",
+    "Python.funciones_lambda.executor": "Run",
+    "Python.generadores.executor": "Run",
     "Python.generate_passwords.executor": "Run",
     "Python.herencia.executor": "Run",
     "Python.monitor.executor": "Run",
     "Python.mundo_pc_app.executor": "Run",
+    "Python.ordenamiento.executor": "Run",
     "Python.polimorfismo.executor": "Run",
     "Python.raton.executor": "Run",
     "Python.sistema_biblioteca_app.executor": "Run",
     "Python.sistema_empleados_app.executor": "Run",
     "Python.teclado.executor": "Run",
+    "Python.zip_function.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -98,7 +108,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.editor",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -144,7 +154,9 @@
       <workItem from="1765931891079" duration="2881000" />
       <workItem from="1765945107241" duration="60000" />
       <workItem from="1767751601690" duration="7170000" />
-      <workItem from="1768364705034" duration="2185000" />
+      <workItem from="1768364705034" duration="2360000" />
+      <workItem from="1768431869666" duration="141000" />
+      <workItem from="1768432036414" duration="5300000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial implementation of expense classifier and dataset generation&#10;&#10;- Introduced a new Python script for classifying expenses using a Perceptron model.&#10;- Generated a dataset of expenses and saved it as a CSV file.&#10;- Added .gitignore to exclude generated files.&#10;- Created necessary project configuration files for IDE.">
       <option name="closed" value="true" />
@@ -298,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768367285990</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Add list comprehension examples for filtering even numbers">
+      <option name="closed" value="true" />
+      <created>1768369155741</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1768369155741</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +342,8 @@
     <MESSAGE value="Add Empresa and Empleado classes with functionality for employee management" />
     <MESSAGE value="Add Biblioteca and Libro classes for library management functionality" />
     <MESSAGE value="Add classes for computer peripherals and implement basic functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add classes for computer peripherals and implement basic functionality" />
+    <MESSAGE value="Add list comprehension examples for filtering even numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add list comprehension examples for filtering even numbers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -348,14 +369,18 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$03_argumentos_por_nombres.coverage" NAME="03_argumentos_por_nombres Coverage Results" MODIFIED="1760920566221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$comprension_listas.coverage" NAME="comprension_listas Coverage Results" MODIFIED="1768368724379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$expresiones_generadoras.coverage" NAME="expresiones_generadoras Coverage Results" MODIFIED="1768436811002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$sistema_biblioteca_app.coverage" NAME="sistema_biblioteca_app Coverage Results" MODIFIED="1765934696566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos/Sistema_Biblioteca" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$clase_object.coverage" NAME="clase_object Coverage Results" MODIFIED="1767756502271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$computadora.coverage" NAME="computadora Coverage Results" MODIFIED="1767758955014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO/mundoPC" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$11_maquina_snacks.coverage" NAME="11_maquina_snacks Coverage Results" MODIFIED="1761278428953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$mundo_pc_app.coverage" NAME="mundo_pc_app Coverage Results" MODIFIED="1767759874257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO/mundoPC" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$generadores.coverage" NAME="generadores Coverage Results" MODIFIED="1768436642027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$generate_passwords.coverage" NAME="generate_passwords Coverage Results" MODIFIED="1761600745948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/01_basicos_varios" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$zip_function.coverage" NAME="zip_function Coverage Results" MODIFIED="1768369120240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$polimorfismo.coverage" NAME="polimorfismo Coverage Results" MODIFIED="1767754539649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$04_regresar_tupla.coverage" NAME="04_regresar_tupla Coverage Results" MODIFIED="1760920777302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$funciones_lambda.coverage" NAME="funciones_lambda Coverage Results" MODIFIED="1768433390814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$Ejercicio_clasificador_costos_1_neurona.coverage" NAME="Ejercicio_clasificador_costos_1_neurona Coverage Results" MODIFIED="1760917735805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Redes_Neuronales" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$05_argumentos_variables.coverage" NAME="05_argumentos_variables Coverage Results" MODIFIED="1760977437909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$monitor.coverage" NAME="monitor Coverage Results" MODIFIED="1767758450547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO/mundoPC" />
@@ -363,6 +388,7 @@
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$sistema_empleados_app.coverage" NAME="sistema_empleados_app Coverage Results" MODIFIED="1765849132773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos/Sistema_Empleados" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$biblioteca.coverage" NAME="biblioteca Coverage Results" MODIFIED="1765934691770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos/Sistema_Biblioteca" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$teclado.coverage" NAME="teclado Coverage Results" MODIFIED="1767758195774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO/mundoPC" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$decoradores.coverage" NAME="decoradores Coverage Results" MODIFIED="1768437290439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$raton.coverage" NAME="raton Coverage Results" MODIFIED="1767757975581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO/mundoPC" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$13_calc_impuestos.coverage" NAME="13_calc_impuestos Coverage Results" MODIFIED="1761284958470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$10_sistema_inventario.coverage" NAME="10_sistema_inventario Coverage Results" MODIFIED="1761110792720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
@@ -371,6 +397,7 @@
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$12_calculadora_funciones.coverage" NAME="12_calculadora_funciones Coverage Results" MODIFIED="1761281471788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$01_persona.coverage" NAME="01_persona Coverage Results" MODIFIED="1761361416555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$herencia.coverage" NAME="herencia Coverage Results" MODIFIED="1767752952511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$ordenamiento.coverage" NAME="ordenamiento Coverage Results" MODIFIED="1768435096639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$empresa.coverage" NAME="empresa Coverage Results" MODIFIED="1765849124411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos/Sistema_Empleados" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$09_potencia_numero_recursividad.coverage" NAME="09_potencia_numero_recursividad Coverage Results" MODIFIED="1761098873870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$08_factorial_numero.coverage" NAME="08_factorial_numero Coverage Results" MODIFIED="1760983172962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
