@@ -39,7 +39,7 @@ class ServicioSnacks:
                     snacks.append(snack)
         except Exception as e:
             print('Error al leer el archivo de snacks:'+{e})
-            return snacks
+        return snacks
 
     def agregar_snack(self, snack):
         self.snacks.append(snack)
