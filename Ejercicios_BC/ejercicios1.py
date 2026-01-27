@@ -33,3 +33,61 @@ if num3 % 2 == 0:
 else:
     print(f'El número {num3} es impar')
 
+# Pide una nota y muestra "Aprobado" si la nota es mayor o igual a 60, "Reprobado" en caso contrario
+print('\n------- Ejercicio 6 -------')
+grade = int(input('Ingresa una nota: '))
+if grade >= 60:
+    print('Aprobado')
+else:
+    print('Reprobado')
+
+#Pide la edad y muestra "Acceso permitido" si tiene 18 o más, y denegado si es menor
+print('\n------- Ejercicio 7 -------')
+edad7 = int(input('Ingresa tu edad: '))
+if edad7 >= 18:
+    print('Acceso permitido')
+else:
+    print('Acceso denegado')
+
+#Define una contraseña fija y pide al usuario que ingrese una. Muestra si es correcta o incorrecta
+print('\n------- Ejercicio 8 -------')
+PASS='elote123'
+pass_user = input('Ingresa la contraseña: ')
+if pass_user == PASS:
+    print('Contraseña correcta')
+else:
+    print('Contraseña Incorrecta')
+
+# Pide una nota y clasifica: 90 o más = excelente, 60 a 89 = aprobado, menor a 60 = reprobado
+print('\n------- Ejercicio 9 -------')
+nota9 = int(input('Ingresa la nota a clasificar: '))
+if nota9>= 90:
+    print('Excelente')
+elif 60 <= nota9 <= 89:
+    print('Aprobado')
+elif nota9<60:
+    print('Reprobado')
+else:
+    print('Valor inválido')
+
+#Pide un número del 1 al 7 y muestra el dia correspondiente cuando 1=lunes, 2=martes etc
+print('\n------- Ejercicio 10 -------')
+day_num = int(input('Ingresa un numero para indicar el día: '))
+
+match day_num:
+    case 1:
+        print('Lunes')
+    case 2:
+        print('Martes')
+    case 3:
+        print('Miércoles')
+    case 4:
+        print('Jueves')
+    case 5:
+        print('Viernes')
+    case 6:
+        print('Sábado')
+    case 7:
+        print('Domingo')
+    case _:
+        print('Número inválido')
