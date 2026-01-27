@@ -1,33 +1,9 @@
 from servicio_peliculas import ServicioPeliculas
+from pelicula import Pelicula
 
 class CatalogoPeliculas:
     def __init__(self):
         self.servicio_peliculas = ServicioPeliculas()
-
-    def catalogo_peliculas(self):
-        salir = False
-        print('-------- Catalogo de peliculas ---------')
-        self.servicio_peliculas.mostrar_peliculas()
-        while not salir:
-            try:
-                opcion = self.menu_peliculas()
-                salir = self.ejecutar_opcion(opcion)
-            except Exception as e:
-                print(e)
-
-    def ejecutar_opcion(self, opcion):
-        if opcion == 1:
-            self.servicio_peliculas.mostrar_peliculas()
-        elif opcion == 2:
-            self.agregar_peliculas()
-        elif opcion == 3:
-            self.servicio_peliculas.eliminar_archivo_peliculas()
-        elif opcion == 4:
-            print('Regresa pronto')
-            return True
-        else:
-            print('Opcion Invalida')
-        return False
 
     def agregar_peliculas(self):
         nombre = input('Nombre de la pelicula: ')
@@ -35,15 +11,33 @@ class CatalogoPeliculas:
         print('Pelicula agregada correctamente')
 
     def menu_peliculas(self):
-        print('''
-        Menú de peliculas\n
-        1 - Listar Peliculas
-        2 - Agregar peliculas
-        3 - Eliminar archivo de peliculas
-        4 - Salir 
-        ''')
-        return int(input('Elige una opcion'))
+        while True:
+            try:
+                print('''
+    Menú de peliculas\n
+    1 - Agregar Peliculas
+    2 - Listar peliculas
+    3 - Eliminar archivo de peliculas
+    4 - Salir 
+                        ''')
+                opc = int(input('Escribe la opción a realizar (1-4)'))
+                if opc == 1:
+                    nombre_peli = input('Ingresa el nombre de la pelicula:')
+                    pelicula = Pelicula(nombre_peli)
+                    self.servicio_peliculas.agregar_pelicula(pelicula)
+                elif opc == 2:
+                    self.servicio_peliculas.listar_peliculas()
+                elif opc == 3:
+                    self.servicio_peliculas.eliminar_archivo_peliculas()
+                elif opc == 4:
+                    print('AdiOs')
+                    break
+                else:
+                    print(f'Opcion invalida')
+            except ValueError:
+                print('Error: Introduce un número válido')
+            except Exception as e:
+                print(f'Ocurrio un error: {e}')
 
-
-catalogo_peliculas = CatalogoPeliculas()
-catalogo_peliculas.catalogo_peliculas()
+app = CatalogoPeliculas()
+app.menu_peliculas()
