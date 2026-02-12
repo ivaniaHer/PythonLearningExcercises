@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 
-from Ejercicios_BC.ejercicioPandas1 import conteo_genero
-
 df = pd.read_csv('personas.csv')
 
 print(df.info())
