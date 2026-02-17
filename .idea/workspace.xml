@@ -4,23 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="ai Implementation with hugging face">
-      <change afterPath="$PROJECT_DIR$/Ejercicios_BC/machine_learning/regresion_lineal.py" afterDir="false" />
+    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="file reorganization">
+      <change afterPath="$PROJECT_DIR$/Ejercicios_BC/machine_learning/modelo_desercion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicios_BC/machine_learning/regresion_logistica.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/api/ia_google.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicioCombinacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicioCombinacion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicioNPM_01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicioNPM_01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicioNPM_02.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicioNPM_02.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicioNPM_03.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicioNPM_03.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicioNumpy1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicioNumpy1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicioPandas1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicioPandas1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicioPandas2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicioPandas2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicioPlt_01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicioPlt_01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicios1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicios1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicios2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicios2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicios3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicios3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicios4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicios4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/ejercicios5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/py_basics/ejercicios5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejercicios_BC/machine_learning/regresion_lineal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicios_BC/machine_learning/regresion_lineal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,12 +108,14 @@
     "Python.herencia.executor": "Run",
     "Python.lectura_archivos.executor": "Run",
     "Python.maquina_snacks.executor": "Run",
+    "Python.modelo_desercion.executor": "Run",
     "Python.monitor.executor": "Run",
     "Python.mundo_pc_app.executor": "Run",
     "Python.ordenamiento.executor": "Run",
     "Python.polimorfismo.executor": "Run",
     "Python.raton.executor": "Run",
     "Python.regresion_lineal.executor": "Run",
+    "Python.regresion_logistica.executor": "Run",
     "Python.servicio_peliculas.executor": "Run",
     "Python.servicio_snacks.executor": "Run",
     "Python.sistema_biblioteca_app.executor": "Run",
@@ -223,7 +213,8 @@
       <workItem from="1770042574761" duration="7827000" />
       <workItem from="1770253920772" duration="1749000" />
       <workItem from="1770652973700" duration="4364000" />
-      <workItem from="1770919886951" duration="878000" />
+      <workItem from="1770919886951" duration="2520000" />
+      <workItem from="1771208903844" duration="707000" />
     </task>
     <task id="LOCAL-00001" summary="Add initial implementation of expense classifier and dataset generation&#10;&#10;- Introduced a new Python script for classifying expenses using a Perceptron model.&#10;- Generated a dataset of expenses and saved it as a CSV file.&#10;- Added .gitignore to exclude generated files.&#10;- Created necessary project configuration files for IDE.">
       <option name="closed" value="true" />
@@ -473,7 +464,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770661220137</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="file reorganization">
+      <option name="closed" value="true" />
+      <created>1770920841206</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1770920841206</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add functions to demonstrate variable arguments and recursion in Python" />
     <MESSAGE value="Add inventory management system with product addition and search functionality" />
     <MESSAGE value="Update README structure and add project requirements" />
     <MESSAGE value="Add snack vending machine implementation with purchase and ticket features" />
@@ -516,7 +514,8 @@
     <MESSAGE value="connection sql-python excercises, CRUD operations, bc data analist examples" />
     <MESSAGE value="bcopenai implementation" />
     <MESSAGE value="ai Implementation with hugging face" />
-    <option name="LAST_COMMIT_MESSAGE" value="ai Implementation with hugging face" />
+    <MESSAGE value="file reorganization" />
+    <option name="LAST_COMMIT_MESSAGE" value="file reorganization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -540,8 +539,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RetosUdemyCourse$ejercicioPandas2.coverage" NAME="ejercicioPandas2 Coverage Results" MODIFIED="1769704173346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$asincrona1.coverage" NAME="asincrona1 Coverage Results" MODIFIED="1769401188974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data_Mining/P1" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$ejercicioPandas2.coverage" NAME="ejercicioPandas2 Coverage Results" MODIFIED="1769704173346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$appcatalogo.coverage" NAME="appcatalogo Coverage Results" MODIFIED="1769536671648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/07_manejo_archivos/catalogo_peliculas_proyecto" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$ejercicioPlt_01.coverage" NAME="ejercicioPlt_01 Coverage Results" MODIFIED="1769786615050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$ejercicioNPM_03.coverage" NAME="ejercicioNPM_03 Coverage Results" MODIFIED="1770075786856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC" />
@@ -574,9 +573,11 @@
     <SUITE FILE_PATH="coverage/Ejercicios_Sistemas_Expertos$03_argumentos_por_nombres.coverage" NAME="03_argumentos_por_nombres Coverage Results" MODIFIED="1760920566221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/03_funciones" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$comprension_listas.coverage" NAME="comprension_listas Coverage Results" MODIFIED="1768368724379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$expresiones_generadoras.coverage" NAME="expresiones_generadoras Coverage Results" MODIFIED="1768436811002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/06_temas_avanzados" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$modelo_desercion.coverage" NAME="modelo_desercion Coverage Results" MODIFIED="1771209704166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC/machine_learning" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$sistema_biblioteca_app.coverage" NAME="sistema_biblioteca_app Coverage Results" MODIFIED="1765934696566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos/Sistema_Biblioteca" />
-    <SUITE FILE_PATH="coverage/RetosUdemyCourse$regresion_lineal.coverage" NAME="regresion_lineal Coverage Results" MODIFIED="1770920475501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC/machine_learning" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$regresion_lineal.coverage" NAME="regresion_lineal Coverage Results" MODIFIED="1770922275361" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC/machine_learning" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$ejercicios5.coverage" NAME="ejercicios5 Coverage Results" MODIFIED="1769616533245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC" />
+    <SUITE FILE_PATH="coverage/RetosUdemyCourse$regresion_logistica.coverage" NAME="regresion_logistica Coverage Results" MODIFIED="1770921515604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC/machine_learning" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$clase_object.coverage" NAME="clase_object Coverage Results" MODIFIED="1767756502271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$ejercicioPandas1.coverage" NAME="ejercicioPandas1 Coverage Results" MODIFIED="1769624832879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$mundo_pc_app.coverage" NAME="mundo_pc_app Coverage Results" MODIFIED="1767759874257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05_POO/mundoPC" />
