@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Implementación de random Forest">
-      <change afterPath="$PROJECT_DIR$/Ejercicios_BC/machine_learning/clasificacion_optimizado.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ejercicios_BC/machine_learning/clasificacion_spam.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ejercicios_BC/machine_learning/ejercicio_ejemplo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_01_db/zona_fit_db/cliente.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_01_db/zona_fit_db/cliente_DAO.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_01_db/zona_fit_db/conexion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +59,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.01_persona.executor": "Run",
+    "Python.01_select_personas.executor": "Run",
     "Python.02_clase_aritmetica.executor": "Run",
     "Python.02_funciones_sumar.executor": "Run",
     "Python.03_argumentos_por_nombres.executor": "Run",
@@ -79,11 +82,10 @@
     "Python.biblioteca.executor": "Run",
     "Python.chatbot_v4.executor": "Run",
     "Python.clase_object.executor": "Run",
-    "Python.clasificacion_fraude.executor": "Run",
-    "Python.clasificacion_optimizado.executor": "Run",
-    "Python.clasificacion_spam.executor": "Run",
+    "Python.cliente_DAO.executor": "Run",
     "Python.comprension_listas.executor": "Run",
     "Python.computadora.executor": "Run",
+    "Python.conexion.executor": "Run",
     "Python.creacion_archivo.executor": "Run",
     "Python.crear_archivo_modo_exclusivo.executor": "Run",
     "Python.decoradores.executor": "Run",
@@ -142,7 +144,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -633,5 +635,13 @@
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$anexar_archivo.coverage" NAME="anexar_archivo Coverage Results" MODIFIED="1768782787959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/07_manejo_archivos" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$test.coverage" NAME="test Coverage Results" MODIFIED="1769191745494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejercicios_BC" />
     <SUITE FILE_PATH="coverage/RetosUdemyCourse$03_contador_personas.coverage" NAME="03_contador_personas Coverage Results" MODIFIED="1765846816491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04_clases_objetos" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
