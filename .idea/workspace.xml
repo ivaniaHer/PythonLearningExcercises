@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Implementación de random Forest">
-      <change afterPath="$PROJECT_DIR$/p_01_db/zona_fit_db/cliente.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p_01_db/zona_fit_db/cliente_DAO.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p_01_db/zona_fit_db/conexion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="69ed008e-3844-4cb2-ab40-1124e3c70767" name="Changes" comment="Add Cliente class and DAO for database operations">
+      <change afterPath="$PROJECT_DIR$/p_01_db/zona_fit_db/zona_fit_app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p_01_db/zona_fit_db/cliente_DAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/p_01_db/zona_fit_db/cliente_DAO.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +40,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ivaniaHer/PythonLearningExcercises&quot;,
-    &quot;accountId&quot;: &quot;eb598293-c04f-476d-b0d5-5807f0fea80e&quot;
+    &quot;url&quot;: &quot;https://github.com/ivaniaHer/PythonLearningExcercises.git&quot;,
+    &quot;accountId&quot;: &quot;8fdb8cfd-78e3-42bc-bbda-069dd46065e1&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -130,6 +127,7 @@
     "Python.test.executor": "Run",
     "Python.test_file.executor": "Run",
     "Python.zip_function.executor": "Run",
+    "Python.zona_fit_app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -144,7 +142,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -158,8 +156,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-PY-252.25557.178" />
-        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
+        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
       </set>
     </attachedChunks>
   </component>
@@ -495,7 +492,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771341155047</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Add Cliente class and DAO for database operations">
+      <option name="closed" value="true" />
+      <created>1772333257926</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1772333257926</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +518,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add snack vending machine implementation with purchase and ticket features" />
     <MESSAGE value="Add simple calculator and tax calculator implementations with input validation" />
     <MESSAGE value="Add Persona and Aritmetica classes with basic functionality" />
     <MESSAGE value="Add chatbot implementation and password hashing utility" />
@@ -538,7 +542,8 @@
     <MESSAGE value="file reorganization" />
     <MESSAGE value="Ejercicios regresion  ML" />
     <MESSAGE value="Implementación de random Forest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementación de random Forest" />
+    <MESSAGE value="Add Cliente class and DAO for database operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Cliente class and DAO for database operations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
