@@ -13,7 +13,6 @@ print(f'Interceptor: {modelo.intercept_}')
 print(f'Pendiente: {modelo.coef_}')
 print(f'Nota predicha para 6 horas: {nueva_prediccion}')
 
-
 x = np.array([
     [100,3],
     [80,2],

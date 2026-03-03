@@ -77,8 +77,8 @@ width = 0.35
 
 plt.figure(figsize=(10,6))
 
-plt.bar(x - width/2, valores1, width, label='SPAM')
-plt.bar(x + width/2, valores2, width, label='NUEVO')
+plt.bar(x - width/2, valores1, width, label='DATA_SPAM')
+plt.bar(x + width/2, valores2, width, label='DATA_FRAUDE')
 
 plt.xticks(x, nombres)
 plt.ylim(0,1)
@@ -91,5 +91,3 @@ plt.grid(axis='y', alpha=0.3)
 plt.tight_layout()
 plt.show()
 evaluar(df_fraude, "CLASIFICACIÓN FRAUDE")
-
-
