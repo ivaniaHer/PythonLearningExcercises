@@ -4,3 +4,6 @@
 /Mimi_ChatBot/.env
 
 .idea
+venv/
+__pycache__/
+*.pyc
