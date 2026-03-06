@@ -1,5 +1,5 @@
-from p_01_db.zona_fit_db.cliente_DAO import Cliente_DAO
-from p_01_db.zona_fit_db.cliente import Cliente
+from python_01_databases.zona_fit_db.cliente_DAO import Cliente_DAO
+from python_01_databases.zona_fit_db.cliente import Cliente
 
 
 ejecutar = True

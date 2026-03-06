@@ -1,5 +1,5 @@
-from p_01_db.zona_fit_db.cliente import Cliente
-from p_01_db.zona_fit_db.conexion import Conexion
+from python_01_databases.zona_fit_db.cliente import Cliente
+from python_01_databases.zona_fit_db.conexion import Conexion
 
 class Cliente_DAO:
     SELECCIONAR = "SELECT * FROM cliente"
