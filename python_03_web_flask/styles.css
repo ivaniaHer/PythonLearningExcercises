@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+    color:white;
+}
+a{
+    color: pink;
+}
+a:hover{
+    color: yellow;
+}
+
+.texto-centrado{
+    text-align: center;
+}
+.titulo{
+    font-size: 200%;
+}
